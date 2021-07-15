@@ -1,0 +1,179 @@
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_2C3ADEA6-40B8-467B-AADD-298241ACC977" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_4D6647AA-D725-439E-B980-2C1E625BCA93" name="new-file" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_2C3ADEA6-40B8-467B-AADD-298241ACC977">
+  <dmn:extensionElements/>
+  <dmn:inputData id="_557448D9-C12E-4C74-A716-73CC3AABA913" name="Age">
+    <dmn:extensionElements/>
+    <dmn:variable id="_8E2CA971-6494-494B-910A-63B0A9C34C64" name="Age" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:inputData id="_D8328CA4-78F5-4B73-AF1E-0E576364106E" name="CreditRating">
+    <dmn:extensionElements/>
+    <dmn:variable id="_244DDB1D-1BE3-4B7A-8629-53D07F2D6BB5" name="CreditRating" typeRef="string"/>
+  </dmn:inputData>
+  <dmn:decision id="_A9D71F87-000C-42B1-98A1-47D5045F4950" name="FinalDecision">
+    <dmn:extensionElements/>
+    <dmn:variable id="_FF503E73-55FC-419F-9AE4-41443E8918B8" name="FinalDecision" typeRef="string"/>
+    <dmn:informationRequirement id="_D0CEF935-738F-43F5-90F0-414F51BFED3A">
+      <dmn:requiredInput href="#_557448D9-C12E-4C74-A716-73CC3AABA913"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_DD6B1671-57AB-42AA-AEE1-1A775FD69A1E">
+      <dmn:requiredInput href="#_D8328CA4-78F5-4B73-AF1E-0E576364106E"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_8C8F07B4-95F2-4385-BDF8-0EE1D33FF536" hitPolicy="PRIORITY" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_DBF889F6-312D-4808-BB30-94BBBF0F3FB7">
+        <dmn:inputExpression id="_F369AB61-A72B-49D8-9E3C-1E68A1C5DB4F" typeRef="number">
+          <dmn:text>Age</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_7701F9A2-02A0-495A-82E0-82452A42ABCA">
+        <dmn:inputExpression id="_D65CA182-EED0-49F5-BBE4-ACF06A2F3C68" typeRef="string">
+          <dmn:text>CreditRating</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_B9C688C0-8FA1-4042-BF72-73E5CDA10B6C" name="decision" typeRef="string"/>
+      <dmn:output id="_33F20272-B808-49CD-87BA-25F9B7A27318" name="priority" typeRef="number">
+        <dmn:outputValues id="_C65A666B-4C96-417E-9C98-449C0A2E9359">
+          <dmn:text>1,5,2,3,4</dmn:text>
+        </dmn:outputValues>
+        <dmn:defaultOutputEntry id="_5C1BA754-EDA3-4C1A-AF01-CFB14A207879">
+          <dmn:text>1</dmn:text>
+        </dmn:defaultOutputEntry>
+      </dmn:output>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_D5E9E86E-C1B9-4CD3-A40B-D7A4EE8F6B54">
+        <dmn:inputEntry id="_4763E275-BA67-4994-94C4-FAB231D59E97">
+          <dmn:text>&gt;=21</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_004C4BA7-DDFF-4184-9357-1B7DA77411F3">
+          <dmn:text>"High"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_D18E3995-48C5-41C5-96B4-3B52C167F44E">
+          <dmn:text>"Approved"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_239DB233-76D9-4F6F-BDF4-16A87777C6DA">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_71CB2A49-A14F-42C9-83E0-9882F3A7B9EB">
+        <dmn:inputEntry id="_9984E3B9-D2A6-468F-9C31-26D7800B1F53">
+          <dmn:text>&gt;=21</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_18B42517-6BE9-4E81-B95C-B997188F83B9">
+          <dmn:text>"Low"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_11EB94DA-E107-4F6C-BBA7-B5953052BC41">
+          <dmn:text>"Rejected"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_29F6F9C3-C8F0-43D7-94B4-147F39F3ADB1">
+          <dmn:text>2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_FFEB27B8-BD25-4A9D-B22F-CD7B25AE5D42">
+        <dmn:inputEntry id="_1B57F3EC-2565-409C-8333-5246F647F113">
+          <dmn:text>&lt;21</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_DEB251A2-386A-42AF-9080-87FA006D450B">
+          <dmn:text>"High"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_8EC4F1FB-AA9D-4BF2-96A0-A8E8402CC92E">
+          <dmn:text>"Rejected"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_07D504B8-5F4D-47BC-9DF5-4076612B02E2">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_B13D18A0-9A3B-4C48-9927-A0FC74226772">
+        <dmn:inputEntry id="_19125658-82B5-4E76-883D-76B474CD1B09">
+          <dmn:text>&lt;21</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F408E407-6395-462B-A7FA-59B8ACC7F53D">
+          <dmn:text>"Low"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_A317251B-C5AA-4523-BE3C-94FA069AA848">
+          <dmn:text>"Rejected"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_FACD3234-6687-47B3-BB38-AD7B3B3F41F4">
+          <dmn:text>4</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_6814AAB8-377E-4412-9160-5A2A78439AB1">
+        <dmn:inputEntry id="_08F867CB-F269-4B68-AFFC-5FE2896A5103">
+          <dmn:text>&gt;=21</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_784835FB-AD0F-49C0-9984-4C561691A49D">
+          <dmn:text>"Low"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_EE481DF4-ADB3-4291-B7B9-B11A7DCB1B6C">
+          <dmn:text>"Approved"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_E344DC56-04CA-49D6-BCD9-16FC9BE3A022">
+          <dmn:text>5</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_36B8AF45-A99D-4E64-9F63-952772FDF971" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_8C8F07B4-95F2-4385-BDF8-0EE1D33FF536">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-_557448D9-C12E-4C74-A716-73CC3AABA913" dmnElementRef="_557448D9-C12E-4C74-A716-73CC3AABA913" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="241" y="300" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_D8328CA4-78F5-4B73-AF1E-0E576364106E" dmnElementRef="_D8328CA4-78F5-4B73-AF1E-0E576364106E" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="401" y="300" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_A9D71F87-000C-42B1-98A1-47D5045F4950" dmnElementRef="_A9D71F87-000C-42B1-98A1-47D5045F4950" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="322" y="167" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-drg-_D0CEF935-738F-43F5-90F0-414F51BFED3A-AUTO-TARGET" dmnElementRef="_D0CEF935-738F-43F5-90F0-414F51BFED3A">
+        <di:waypoint x="291" y="325"/>
+        <di:waypoint x="372" y="167"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_DD6B1671-57AB-42AA-AEE1-1A775FD69A1E-AUTO-TARGET" dmnElementRef="_DD6B1671-57AB-42AA-AEE1-1A775FD69A1E">
+        <di:waypoint x="451" y="325"/>
+        <di:waypoint x="372" y="217"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
